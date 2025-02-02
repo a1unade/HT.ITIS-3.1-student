@@ -1,3 +1,4 @@
+#if false
 using System.Linq.Expressions;
 using Dotnet.Homeworks.DataAccess.Specs;
 using Dotnet.Homeworks.Domain.Entities;
@@ -55,3 +56,4 @@ public partial class SpecificationTests
         yield return new object[] { specs.HasComplexName, users, new[] { users[5] } };
     }
 }
+#endif

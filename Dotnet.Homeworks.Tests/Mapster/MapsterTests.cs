@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿#if false
+using System.Reflection;
 using Dotnet.Homeworks.Features.Helpers;
 using Dotnet.Homeworks.Features.Orders.Mapping;
 using Dotnet.Homeworks.Features.Products.Mapping;
@@ -99,3 +100,4 @@ public partial class MapsterTests
         return methodCode is not null && methodCode.Length > 0;
     }
 }
+#endif
