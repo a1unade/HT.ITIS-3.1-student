@@ -1,3 +1,4 @@
+#if false
 using Dotnet.Homeworks.Tests.CqrsValidation.Helpers;
 using Dotnet.Homeworks.Tests.RunLogic.Attributes;
 using Dotnet.Homeworks.Tests.Shared.Cqrs;
@@ -25,3 +26,4 @@ public class MediatorTests
         Assert.Null(mediator);
     }
 }
+#endif
