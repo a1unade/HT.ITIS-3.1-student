@@ -1,7 +1,17 @@
 version: '3.8'
 services:
   dotnet_postgres:
-    image: postgres:alpine
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: Homeworks
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dotnet_network
     
   dotnet_rabbitmq:
     image: rabbitmq:3-alpine
@@ -17,9 +27,26 @@ services:
     
   dotnet_main:
     image: dotnet-web
+    build:
+      context: .
+      dockerfile: Dotnet.Homeworks.MainProject/Dockerfile
+    environment:
+        ASPNETCORE_URLS: "http://*:80"
+        ConnectionStrings__Default: "Host=dotnet_postgres;Port=5432;Username=postgres;Password=postgres;Database=Homeworks;"
+    ports:
+      - "9000:80"
+    depends_on:
+      - dotnet_postgres
     
   dotnet_mailing:
     image: dotnet-web
     
   dotnet_storage:
     image: dotnet-web
+    
+volumes:
+  postgres_data:
+
+networks:
+  dotnet_network:
+    driver: bridge
