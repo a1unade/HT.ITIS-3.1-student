@@ -15,11 +15,13 @@ builder.Services.AddSingleton<ICommunicationService, CommunicationService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
 
+var rabbitMqConfig = builder.Configuration
+    .GetSection(nameof(RabbitMqConfig))
+    .Get<RabbitMqConfig>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 builder.Services.AddScoped<ICommunicationService, CommunicationService>();
 builder.Services.Configure<RabbitMqConfig>(builder.Configuration.GetSection(nameof(RabbitMqConfig)));
-builder.Services.AddMasstransitRabbitMq(builder.Configuration.GetSection("RabbitMq"));
-
+builder.Services.AddMasstransitRabbitMq(rabbitMqConfig!);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
