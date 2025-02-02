@@ -9,6 +9,11 @@ namespace Dotnet.Homeworks.MainProject.Controllers;
 public class UserManagementController : ControllerBase
 {
     private readonly IRegistrationService _registrationService;
+
+    public UserManagementController(IRegistrationService registrationService)
+    {
+        _registrationService = registrationService;
+    }
     
     [HttpPost("user")]
     public async Task<IActionResult> CreateUser(RegisterUserDto userDto, CancellationToken cancellationToken)
