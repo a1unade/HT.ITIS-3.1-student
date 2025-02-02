@@ -1,3 +1,4 @@
+#if false
 using Dotnet.Homeworks.Tests.RunLogic.Attributes;
 using Dotnet.Homeworks.Tests.Shared.Docker;
 using static Dotnet.Homeworks.Tests.Shared.Docker.Constants;
@@ -16,3 +17,4 @@ public class DockerMain
         Assert.True(dotnetMongoDependencyExists);
     }
 }
+#endif

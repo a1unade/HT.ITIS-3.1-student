@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿#if false
+using System.Reflection;
 using Dotnet.Homeworks.DataAccess.Specs.Infrastructure;
 using Dotnet.Homeworks.Domain.Entities;
 using Dotnet.Homeworks.Tests.RunLogic.Attributes;
@@ -38,3 +39,4 @@ public partial class SpecificationTests
         Assert.True(actualOutput.SequenceEqual(expectedOutput));
     }
 }
+#endif

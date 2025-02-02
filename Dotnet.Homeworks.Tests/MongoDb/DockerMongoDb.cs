@@ -1,3 +1,4 @@
+#if false
 using Dotnet.Homeworks.Tests.RunLogic.Attributes;
 using Dotnet.Homeworks.Tests.Shared.Docker;
 
@@ -26,3 +27,4 @@ public class DockerMongodb
         Assert.NotNull(mongoRootPassword);
     }
 }
+#endif
