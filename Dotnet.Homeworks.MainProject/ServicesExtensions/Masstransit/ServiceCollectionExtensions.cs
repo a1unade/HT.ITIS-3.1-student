@@ -5,7 +5,7 @@ namespace Dotnet.Homeworks.MainProject.ServicesExtensions.Masstransit;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMasstransitRabbitMq(this IServiceCollection services,
-        RabbitMqConfig rabbitConfiguration)
+        IConfigurationSection rabbitConfiguration)
     {
         throw new NotImplementedException();
     }
