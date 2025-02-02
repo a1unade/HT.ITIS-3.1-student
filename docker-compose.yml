@@ -28,7 +28,18 @@ services:
       - dotnet_network
 
   dotnet_minio:
-    image: minio/minio:latest
+    image: quay.io/minio/minio
+    environment:
+      MINIO_ROOT_USER: a1unade
+      MINIO_ROOT_PASSWORD: a1unade
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - dotnet_network
     
   dotnet_mongodb:
     image: mongo:latest
@@ -74,6 +85,23 @@ services:
     
   dotnet_storage:
     image: dotnet-web
+    build:
+      context: .
+      dockerfile: Dotnet.Homeworks.Storage.API/Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://*:8082
+      MinioConfig__Username: a1unade
+      MinioConfig__Password: a1unade
+      MinioConfig__Endpoint: dotnet_minio
+      MinioConfig__Port: 9000
+      MinioConfig__WithSsl: false
+    depends_on:
+      - dotnet_minio
+    networks:
+      - dotnet_network
     
 volumes:
   postgres_data:
